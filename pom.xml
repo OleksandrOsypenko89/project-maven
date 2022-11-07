@@ -110,7 +110,6 @@
                 <version>2.5.1</version>
                 <configuration>
                     <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                    <includeScope>compile</includeScope>
                 </configuration>
                 <executions>
                     <execution>
