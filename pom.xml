@@ -18,9 +18,32 @@
         <repository>
             <id>local</id>
             <name>desktop-game-engine</name>
-            <url>file:${project.basedir}/desktop-game-engine-local</url>
+            <url>file:${project.basedir}/lib/com/javarush/desktop-game-engine</url>
         </repository>
     </repositories>
+
+    <!--    В терминале выполнить следующую команду.-->
+    <!--    Если вы используете операционную систему MacOS.-->
+    <!--    -->
+    <!--    mvn \-->
+    <!--    deploy:deploy-file \-->
+    <!--    -Durl=file:./lib \-->
+    <!--    -Dfile=./lib/desktop-game-engine.jar \-->
+    <!--    -DgroupId=com.javarush \-->
+    <!--    -DartifactId=desktop-game-engine \-->
+    <!--    -Dpackaging=jar \-->
+    <!--    -Dversion=1.0-->
+
+    <!--    Если вы используете операционную систему Windows, нужно заменить \ на ^, то есть написать-->
+    <!--    -->
+    <!--    mvn ^-->
+    <!--    deploy:deploy-file ^-->
+    <!--    -Durl=file:./lib ^-->
+    <!--    -Dfile=./lib/desktop-game-engine.jar ^-->
+    <!--    -DgroupId=com.javarush ^-->
+    <!--    -DartifactId=desktop-game-engine-local ^-->
+    <!--    -Dpackaging=jar ^-->
+    <!--    -Dversion=1.0-->
 
     <dependencies>
         <!--commons-lang3-->
@@ -38,14 +61,14 @@
         <!--desktop-game-engine-local-->
         <dependency>
             <groupId>com.javarush</groupId>
-            <artifactId>desktop-game-engine-local</artifactId>
+            <artifactId>desktop-game-engine</artifactId>
             <version>1.0</version>
         </dependency>
         <!--junit-platform-suite-engine-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
+            <version>5.9.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -59,7 +82,6 @@
         </resources>
 
         <plugins>
-            <!-- Usual compilation -->
             <!--maven-compiler-plugin-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,29 +101,6 @@
                         <exclude>StrangeTest.java</exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <!--maven-resources-plugin-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/lib</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <!--maven-dependency-plugin-->
             <plugin>
